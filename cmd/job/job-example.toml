@@ -5,4 +5,4 @@
 [kafka]
     topic = "goim-push-topic"
     group = "goim-push-group-job"
-    brokers = ["127.0.0.1:9092"]
+    brokers = ["127.0.0.1:29092"]

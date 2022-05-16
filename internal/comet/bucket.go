@@ -32,6 +32,10 @@ func NewBucket(c *conf.Bucket) (b *Bucket) {
 	b.routines = make([]chan *pb.BroadcastRoomReq, c.RoutineAmount)
 	for i := uint64(0); i < c.RoutineAmount; i++ {
 		c := make(chan *pb.BroadcastRoomReq, c.RoutineSize)
+		/**
+		TODO NODE:
+		启动对应的协程数量，来处理该bucket的rooms消息
+		*/
 		b.routines[i] = c
 		go b.roomproc(c)
 	}

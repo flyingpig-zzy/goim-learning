@@ -101,7 +101,9 @@ func client(mid int64) {
 }
 
 func startClient(key int64) {
+	fmt.Println("startClient.....")
 	time.Sleep(time.Duration(rand.Intn(120)) * time.Second)
+	fmt.Println("startClient..... rand.Intn")
 	atomic.AddInt64(&aliveCount, 1)
 	quit := make(chan bool, 1)
 	defer func() {
@@ -110,6 +112,7 @@ func startClient(key int64) {
 	}()
 	// connnect to server
 	conn, err := net.Dial("tcp", os.Args[3])
+	fmt.Println("conn", conn, "err", err)
 	if err != nil {
 		log.Errorf("net.Dial(%s) error(%v)", os.Args[3], err)
 		return
